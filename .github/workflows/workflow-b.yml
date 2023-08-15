@@ -12,6 +12,8 @@ on:
         required: true
         default: 'pizza'
 
+run-name: workflow b with ${{ inputs.color }} and ${{ inputs.food }}
+
 jobs:
   trigger:
     runs-on: ubuntu-latest

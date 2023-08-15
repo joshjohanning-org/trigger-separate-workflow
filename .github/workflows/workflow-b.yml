@@ -1,0 +1,27 @@
+name: workflow-b
+
+on:
+  workflow_dispatch:
+    inputs:
+      color:
+        description: 'what color'     
+        required: true
+        default: 'green'
+      food:
+        description: 'what food'     
+        required: true
+        default: 'pizza'
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+
+      - name: echo the inputs
+        run: echo "the color is ${{ inputs.color }} and the food is ${{ inputs.food }}"

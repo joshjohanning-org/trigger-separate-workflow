@@ -27,7 +27,13 @@ jobs:
       run: echo "$GITHUB_CONTEXT"
 
     - name: get emoji
+      id: get-emoji
       uses: ./food-and-color-emoji-action
       with:
         color: ${{ inputs.color }}
         food: ${{ inputs.food }}
+
+    - name: write emoji
+      run: |
+        echo "${{ steps.get-emoji.outputs.color-emoji }} ${{ steps.get-emoji.outputs.food-emoji }}"
+        cho "${{ steps.get-emoji.outputs.color-emoji }} ${{ steps.get-emoji.outputs.food-emoji }}" >> $GITHUB_STEP_SUMMARY

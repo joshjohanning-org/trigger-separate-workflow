@@ -21,6 +21,7 @@ runs:
       if: ${{ inputs.color != '' }}
       shell: bash
       run: |
+        echo "processing color emoji..."
         echo "::debug::You entered ${{ inputs.color }}."
         
         case ${{ inputs.color }} in
@@ -49,7 +50,9 @@ runs:
       if: ${{ inputs.food != '' }}
       shell: bash
       run: |
-        echo "::debug::You entered ${{ inputs.color }}."
+        echo "processing food emoji..."
+        echo "::debug::You entered ${{ inputs.food }}."
+        
         case "${{ inputs.food }}" in
           "pad thai")
             food=🍜 ;;

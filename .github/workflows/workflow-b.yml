@@ -4,14 +4,19 @@ on:
   workflow_dispatch:
     inputs:
       color:
-        description: 'what color'     
+        description: 'what color'
         required: false
+        default: 'green'
       food:
         description: 'what food'     
         required: false
         default: 'pizza'
+      animal:
+        description: 'what animal'
+        required: false
+        default: 'whale'
 
-run-name: workflow b with ${{ inputs.color }} and ${{ inputs.food }}
+run-name: workflow b with ${{ inputs.color }}, ${{ inputs.food }}, and ${{ inputs.animal }}
 
 jobs:
   triggered:
@@ -27,12 +32,19 @@ jobs:
 
     - name: get emoji
       id: get-emoji
-      uses: ./food-and-color-emoji-action
+      uses: joshjohanning/text-to-emoji-action@main
       with:
         color: ${{ inputs.color }}
         food: ${{ inputs.food }}
+        animal: ${{ inputs.animal }}
 
     - name: write emoji
       run: |
-        echo "${{ steps.get-emoji.outputs.color-emoji }} ${{ steps.get-emoji.outputs.food-emoji }}"
-        echo "${{ steps.get-emoji.outputs.color-emoji }} ${{ steps.get-emoji.outputs.food-emoji }}" >> $GITHUB_STEP_SUMMARY
+        echo "color emoji: ${{ steps.get-emoji.outputs.color-emoji }}"
+        echo "food emoji: ${{ steps.get-emoji.outputs.food-emoji }}"
+        echo "animal emoji: ${{ steps.get-emoji.outputs.animal-emoji }}"
+        
+        echo "${{ steps.get-emoji.outputs.color-emoji }} \
+          ${{ steps.get-emoji.outputs.food-emoji }} \
+          ${{ steps.get-emoji.outputs.food-emoji }}" \
+          >> $GITHUB_STEP_SUMMARY

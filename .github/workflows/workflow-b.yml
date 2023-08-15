@@ -47,7 +47,7 @@ jobs:
             ;;
         esac
 
-        case ${{ inputs.food }} in
+        case "${{ inputs.food }}" in
           "pad thai")
             echo "You entered ${{ inputs.food }}."
             food=🍜

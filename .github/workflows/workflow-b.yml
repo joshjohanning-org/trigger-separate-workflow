@@ -32,7 +32,7 @@ jobs:
 
     - name: get emoji
       id: get-emoji
-      uses: joshjohanning/text-to-emoji-action@main
+      uses: joshjohanning/text-to-emoji-action@v1
       with:
         color: ${{ inputs.color }}
         food: ${{ inputs.food }}

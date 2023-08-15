@@ -1,0 +1,86 @@
+name: 'food-and-color-emoji-action'
+description: 'Spits out an emoji based on input'
+inputs:
+  color:
+    description: 'The color to return an emoji for'
+    required: true
+    default: 'green'
+  food:
+    description: 'The food to return an emoji for'
+    required: true
+    default: 'pizza'
+outputs:
+  color-emoji:
+    description: "The color emoji"
+    value: ${{ steps.color-emoji-generator.outputs.color-emoji }}
+  food-emoji:
+    description: "The food emoji"
+    value: ${{ steps.food-emoji-generator.outputs.food-emoji }}
+runs:
+  using: "composite"
+  steps:
+    - id: color-emoji-generator
+      shell: bash
+      run: |
+        echo "::debug::You entered ${{ inputs.color }}."
+        
+        case ${{ inputs.color }} in
+          red)
+            color=🎈 ;;
+          orange)
+            color=🎃 ;;
+          yellow)
+            color=🐝 ;;
+          green)
+            color=🐸 ;;
+          blue)
+            color=💙 ;;
+          indigo)
+            color=🪁 ;;
+          violet)
+            color=🪻 ;;
+          *)
+            echo "You entered another color, ${{ inputs.color }}, so you get this emoji."
+            color=🎨 ;;
+        esac
+        
+        echo "color-emoji=$(echo $color)" >> $GITHUB_OUTPUT
+        
+    - id: food-emoji-generator
+      shell: bash
+      run: |
+        echo "::debug::You entered ${{ inputs.color }}."
+        case "${{ inputs.food }}" in
+          "pad thai")
+            food=🍜 ;;
+          "pizza")
+            food=🍕 ;;
+          "burger")
+            food=🍔 ;;
+          "steak")
+            food=🥩 ;;
+          "fish")
+            food=🍣 ;;
+          "shrimp")
+            food=🍤 ;;
+          "salad")
+            food=🥗 ;;
+          "donut")
+            food=🍩 ;;
+          "grapes")
+            food=🍇 ;;
+          "taco")
+            food=🌮 ;;
+          "egg")
+            food=🍳 ;;
+          "cookie")
+            food=🍪 ;;
+          "bacon")
+            food=🥓 ;;
+          *)
+            echo "You entered another food, ${{ inputs.food }}, so you get this emoji."
+            food=🍽️
+            ;;
+        esac
+        
+        echo "food-emoji=$(echo $food)" >> $GITHUB_OUTPUT

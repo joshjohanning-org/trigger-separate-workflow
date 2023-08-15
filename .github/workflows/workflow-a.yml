@@ -35,7 +35,8 @@ jobs:
             ref: context.ref,
             workflow_id: 'workflow-b.yml',
             inputs: {
-              "color": "blue",
-              "food": "pad thai",
+              "color": "orange",
+              "food": "avocado",
+              "animal": "bee",
             }
           })

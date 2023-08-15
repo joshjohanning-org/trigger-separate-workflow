@@ -26,44 +26,8 @@ jobs:
         GITHUB_CONTEXT: ${{ toJSON(github) }}
       run: echo "$GITHUB_CONTEXT"
 
-    - name: echo the inputs
-      run: | 
-        case ${{ inputs.color }} in
-          red)
-            echo "You entered ${{ inputs.color }}."
-            color=🎈
-            ;;
-          blue)
-            echo "You entered ${{ inputs.color }}."
-            color=💙 
-            ;;
-          green)
-            echo "You entered ${{ inputs.color }}."
-            color=🐸
-            ;;
-          *)
-            echo "You entered another color, ${{ inputs.color }}."
-            color=🎨
-            ;;
-        esac
-
-        case "${{ inputs.food }}" in
-          "pad thai")
-            echo "You entered ${{ inputs.food }}."
-            food=🍜
-            ;;
-          "pizza")
-            echo "You entered ${{ inputs.food }}."
-            food=🍕
-            ;;
-          "burger")
-            echo "You entered ${{ inputs.food }}."
-            food=🍔
-            ;;
-          *)
-            echo "You entered another food, ${{ inputs.food }}."
-            food=🍽️
-            ;;
-        esac
-        
-        echo "the color is $color and the food is $food"
+    - name: get emoji
+      uses: ./food-and-color-emoji-action
+      with:
+        color: ${{ inputs.color }}
+        food: ${{ inputs.food }}

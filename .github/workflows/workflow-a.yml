@@ -23,10 +23,16 @@ jobs:
       uses: actions/github-script@v6
       with:
         script: |
+          console.log("... logging values for debug ...");
+          console.log(context.repo.owner);
+          console.log(context.repo.repo);
+          console.log(context.ref);
+          console.log("...");
+          
           github.rest.actions.createWorkflowDispatch({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            ref: context.sha,
+            ref: context.ref,
             workflow_id: 'workflow-b.yml',
             inputs: {
               "color": "blue",

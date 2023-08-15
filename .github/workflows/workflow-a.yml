@@ -26,7 +26,7 @@ jobs:
           github.rest.actions.createWorkflowDispatch({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            ref: context.ref,
+            ref: context.sha,
             workflow_id: 'workflow-b.yml',
             inputs: {
               "color": "blue",

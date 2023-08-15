@@ -15,7 +15,7 @@ on:
 run-name: workflow b with ${{ inputs.color }} and ${{ inputs.food }}
 
 jobs:
-  trigger:
+  triggered:
     runs-on: ubuntu-latest
 
     steps:

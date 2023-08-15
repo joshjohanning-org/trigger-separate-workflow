@@ -1,14 +1,12 @@
 name: 'food-and-color-emoji-action'
-description: 'Spits out an emoji based on input'
+description: 'Sets output variables for an emoji based on input'
 inputs:
   color:
     description: 'The color to return an emoji for'
-    required: true
-    default: 'green'
+    required: false
   food:
     description: 'The food to return an emoji for'
-    required: true
-    default: 'pizza'
+    required: false
 outputs:
   color-emoji:
     description: "The color emoji"

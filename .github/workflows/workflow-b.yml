@@ -6,7 +6,6 @@ on:
       color:
         description: 'what color'     
         required: false
-        default: 'green'
       food:
         description: 'what food'     
         required: false

@@ -27,7 +27,6 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             workflow_id: 'workflow-b.yml',
-            ref: '${{ github.head_ref }}',
             inputs: {
               "color": "blue",
               "food": "pad thai",

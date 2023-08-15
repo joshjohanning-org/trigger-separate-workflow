@@ -25,7 +25,7 @@ runs:
         
         case ${{ inputs.color }} in
           red)
-            color=🎈 ;;
+            color=🐞 ;;
           orange)
             color=🎃 ;;
           yellow)
@@ -33,7 +33,7 @@ runs:
           green)
             color=🐸 ;;
           blue)
-            color=💙 ;;
+            color=🐳 ;;
           indigo)
             color=🪁 ;;
           violet)

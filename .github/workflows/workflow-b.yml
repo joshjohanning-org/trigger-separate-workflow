@@ -36,4 +36,4 @@ jobs:
     - name: write emoji
       run: |
         echo "${{ steps.get-emoji.outputs.color-emoji }} ${{ steps.get-emoji.outputs.food-emoji }}"
-        cho "${{ steps.get-emoji.outputs.color-emoji }} ${{ steps.get-emoji.outputs.food-emoji }}" >> $GITHUB_STEP_SUMMARY
+        echo "${{ steps.get-emoji.outputs.color-emoji }} ${{ steps.get-emoji.outputs.food-emoji }}" >> $GITHUB_STEP_SUMMARY

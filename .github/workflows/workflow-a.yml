@@ -20,7 +20,7 @@ jobs:
       run: echo "$GITHUB_CONTEXT"
 
     - name: Trigger Workflow
-      uses: actions/github-script@v6
+      uses: actions/github-script@v7
       with:
         script: |
           console.log("... logging values for debug ...");
